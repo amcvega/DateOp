@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "Module for the conversion of strings and dates.",
-    "repository": "https://github.com/USER/PROJECT.git",
+    "repository": "https://github.com/jterbraak/DateOp.git",
     "license": "BSD3",
     "source-directories":
 	[

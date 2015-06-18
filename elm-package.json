@@ -1,0 +1,23 @@
+{
+    "version": "1.0.0",
+    "summary": "Module for the conversion of strings and dates.",
+    "repository": "https://github.com/USER/PROJECT.git",
+    "license": "BSD3",
+    "source-directories":
+	[
+        "src"
+    ],
+    "exposed-modules":
+	[
+		"Date.Op",
+		"Date.StartOf",
+		"Date.TimeStamp",
+		"Date.Locale.NL",
+		"Date.Locale.DE",
+		"Date.Locale.EN"
+	],
+    "dependencies": {
+        "elm-lang/core": "2.0.0 <= v < 3.0.0"
+    },
+    "elm-version": "0.15.0 <= v < 0.16.0"
+}

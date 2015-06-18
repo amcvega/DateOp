@@ -5,7 +5,6 @@ module Date.Op(..) where
 
 # Format
 @docs format, formatWithDict
-@docs format, formatWithDict
 
 # Parse
 @docs parse, parseWithDict
@@ -17,7 +16,7 @@ module Date.Op(..) where
 @docs baseTokens, extTokens, stdTokens
 
 # Localize
-@doc localize
+@docs localize
 
 --}
 

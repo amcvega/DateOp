@@ -1,5 +1,9 @@
 module Date.Locale.NL(localize) where
+{-| This module adds Dutch names for months and weekdays.
 
+# Extend
+@docs localize
+--}
 import Date
 import Date.Op
 

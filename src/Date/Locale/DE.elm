@@ -1,4 +1,4 @@
-module Date.Locale.NL(localize) where
+module Date.Locale.DE(localize) where
 {-| This module adds German names for months and weekdays.
 
 # Extend

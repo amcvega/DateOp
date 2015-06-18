@@ -3,19 +3,17 @@
     "summary": "Module for the conversion of strings and dates.",
     "repository": "https://github.com/jterbraak/DateOp.git",
     "license": "BSD3",
-    "source-directories":
-	[
+    "source-directories": [
         "src"
     ],
-    "exposed-modules":
-	[
-		"Date.Op",
-		"Date.StartOf",
-		"Date.TimeStamp",
-		"Date.Locale.NL",
-		"Date.Locale.DE",
-		"Date.Locale.EN"
-	],
+    "exposed-modules": [
+        "Date.Op",
+        "Date.StartOf",
+        "Date.TimeStamp",
+        "Date.Locale.NL",
+        "Date.Locale.DE",
+        "Date.Locale.EN"
+    ],
     "dependencies": {
         "elm-lang/core": "2.0.0 <= v < 3.0.0"
     },

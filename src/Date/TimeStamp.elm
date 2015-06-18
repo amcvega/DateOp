@@ -128,7 +128,7 @@ fromMonth m = case m of
 
 {-| Converts a weekday used in Date to an Int. The range is 0 to 6 and starts with Monday.
 --}
-frowWeekDay : Date.Day -> Int
+fromWeekDay : Date.Day -> Int
 fromWeekDay d=case d of
     Date.Mon ->0
     Date.Tue ->1

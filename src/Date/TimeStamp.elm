@@ -22,6 +22,8 @@ import String
 import Result
 import Maybe exposing (oneOf, withDefault)
 
+import Native.DateOp
+
 {-| This type is used to hold the information gathered by the parser and can be easily converted to a Date.
 --}
 type alias TimeStamp =
@@ -103,11 +105,10 @@ toIsoDate ts =
     ( toString ts.minute |>String.padLeft 2 '0' ) ++":" ++
     ( toString ts.second |> String.padLeft 2 '0')
 
---replace ASAP with a better function
-{-| This is kind of an ugly hack to guarantee that a tuple gets converted to a date as the tuple constructor of Date is not available yet.
+{-| Convert a TimeStamp to a Date.
 --}
 toDate:TimeStamp -> Date.Date
-toDate ts = toIsoDate ts |> Date.fromString |> Result.toMaybe |> Maybe.withDefault (Date.fromTime 0)
+toDate ts = Native.DateOp.fromMoment ts.year ts.month ts.day ts.hour ts.minute ts.second ts.millisecond
 
 {-| Converts a Month used in Date to an Int.
 --}
@@ -138,6 +139,16 @@ fromWeekDay d=case d of
     Date.Sat ->5
     Date.Sun ->6
 
+alter : (Int -> Int -> Int) -> TimeStamp -> TimeStamp -> TimeStamp
+alter op ts1 ts2 = TimeStamp
+    (op ts1.year ts2.year)
+    (op ts1.month ts2.month)
+    (op ts1.day ts2.day)
+    (op ts1.hour ts2.hour)
+    (op ts1.minute ts2.minute)
+    (op ts1.second ts2.second)
+    (op ts1.millisecond ts2.millisecond)
+    
 {-| Combines two fragments. Values from the base(first argument) are given precedence.
 --}
 union : TimeStampFragment -> TimeStampFragment -> TimeStampFragment

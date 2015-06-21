@@ -1,5 +1,8 @@
 module Date.StartOf(year, month, week, day, hour, minute, second) where
 {-| This module provides functions to easily calculate the start of a period of time.
+
+# Calculate 
+@docs year, month, week, day, hour, minute, second
 --}
 
 import Date exposing (Date)

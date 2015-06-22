@@ -51,7 +51,7 @@ type alias TimeStampFragment =
 {-| A standard TimeStamp used to fill empty aspects of a TimeStampFragment at conversion.
 --}
 stdTimeStamp : TimeStamp
-stdTimeStamp = TimeStamp 1970 1 1 0 0 0 0
+stdTimeStamp = TimeStamp 1970 0 0 0 0 0 0
 
 emptyTimeStamp : TimeStamp
 emptyTimeStamp = TimeStamp 0 0 0 0 0 0 0
@@ -114,30 +114,30 @@ toDate ts = Native.DateOp.fromMoment ts.year ts.month ts.day ts.hour ts.minute t
 --}
 fromMonth : Date.Month -> Int
 fromMonth m = case m of
-    Date.Jan -> 1
-    Date.Feb -> 2
-    Date.Mar -> 3
-    Date.Apr -> 4
-    Date.May -> 5
-    Date.Jun -> 6
-    Date.Jul -> 7
-    Date.Aug -> 8
-    Date.Sep -> 9
-    Date.Oct -> 10
-    Date.Nov -> 11
-    Date.Dec -> 12
+    Date.Jan -> 0
+    Date.Feb -> 1
+    Date.Mar -> 2
+    Date.Apr -> 3
+    Date.May -> 4
+    Date.Jun -> 5
+    Date.Jul -> 6
+    Date.Aug -> 7
+    Date.Sep -> 8
+    Date.Oct -> 9
+    Date.Nov -> 10
+    Date.Dec -> 11
 
 {-| Converts a weekday used in Date to an Int. The range is 0 to 6 and starts with Monday.
 --}
 fromWeekDay : Date.Day -> Int
 fromWeekDay d=case d of
-    Date.Mon ->0
-    Date.Tue ->1
-    Date.Wed ->2
-    Date.Thu ->3
-    Date.Fri ->4
-    Date.Sat ->5
-    Date.Sun ->6
+    Date.Sun ->0
+    Date.Mon ->1
+    Date.Tue ->2
+    Date.Wed ->3
+    Date.Thu ->4
+    Date.Fri ->5
+    Date.Sat ->6
 
 alter : (Int -> Int -> Int) -> TimeStamp -> TimeStamp -> TimeStamp
 alter op ts1 ts2 = TimeStamp

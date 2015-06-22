@@ -23,7 +23,7 @@ week d = TimeStamp.toDate <|
     { stdTimeStamp
     | year <- Date.year d
     , month <- Date.month d |> TimeStamp.fromMonth
-    , day <- Date.day d - (Date.dayOfWeek d |> TimeStamp.fromWeekDay)
+    , day <- Date.day d - (Date.dayOfWeek d |> TimeStamp.fromWeekDay |> (+) 1 )
     }
 
 day : Date->Date

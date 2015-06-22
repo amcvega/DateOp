@@ -66,7 +66,7 @@ not implemented from date(): D, j, l, S, z, W, F, M, t, L, o, B
 --}
 baseTokens : TokenDict
 baseTokens = 
-    let justInt = String.toInt >> Result.toMaybe
+    let justInt = String.toInt >> Result.map ((+) -1) >> Result.toMaybe
     in Dict.fromList
     [   ( "d"
         ,   ( day >> toString >> String.padLeft 2 '0'
@@ -79,12 +79,12 @@ baseTokens =
             )
         )
     ,   ( "m"
-        ,   ( month >> TimeStamp.fromMonth >> toString >> String.padLeft 2 '0'
+        ,   ( month >> TimeStamp.fromMonth >> (+) 1 >> toString >> String.padLeft 2 '0'
             , Just ( "[0-9]{2}" , \p -> {emptyTimeStampFragment | month <- justInt p} )
             )
         )
     ,   ( "n"
-        ,   ( month >> TimeStamp.fromMonth >> toString
+        ,   ( month >> TimeStamp.fromMonth >> (+) 1 >> toString
             , Just ( "[0-9]{1,2}" , \p -> {emptyTimeStampFragment | month <- justInt p} )
             )
         )
@@ -158,7 +158,7 @@ extTokens =
             )
         )
     ,   ( "h"
-        ,   ( hour >> (%) 12 >>toString >> String.padLeft 2 '0'
+        ,   ( hour >> (%) 12 >> toString >> String.padLeft 2 '0'
             , Nothing
             )
         )
@@ -190,12 +190,12 @@ localize shortM longM dow base =
     in extendTokenDict base <| Dict.fromList
         [   ( "F" -- long month
             ,   ( month >> longM
-                , Just ( String.join "|" longMs , \p -> {emptyTimeStampFragment | month <- indexOf p longMs 1} )
+                , Just ( String.join "|" longMs , \p -> {emptyTimeStampFragment | month <- indexOf p longMs 0} )
                 )
             )
         ,   ( "M" -- short month
             ,   ( month >> shortM
-                , Just ( String.join "|" shortMs , \p -> {emptyTimeStampFragment | month <- indexOf p shortMs 1} )
+                , Just ( String.join "|" shortMs , \p -> {emptyTimeStampFragment | month <- indexOf p shortMs 0} )
                 )
             )
         ,   ( "D" -- short month

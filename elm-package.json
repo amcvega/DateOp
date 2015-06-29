@@ -1,12 +1,14 @@
 {
-    "version": "2.2.0",
+    "version": "2.1.0",
     "summary": "Module for the conversion of strings and dates.",
     "repository": "https://github.com/jterbraak/DateOp.git",
     "license": "BSD3",
-    "source-directories": [
+    "source-directories":
+	[
         "src"
     ],
-    "exposed-modules": [
+    "exposed-modules":
+	[
         "Date.Op",
         "Date.Add",
         "Date.StartOf",
@@ -15,9 +17,10 @@
         "Date.Locale.DE",
         "Date.Locale.EN"
     ],
-    "native-modules": true,
-    "dependencies": {
+    "dependencies":
+	{
         "elm-lang/core": "2.0.0 <= v < 3.0.0"
     },
+	"native-modules": true,
     "elm-version": "0.15.0 <= v < 0.16.0"
 }

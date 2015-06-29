@@ -19,8 +19,15 @@ Elm.Native.DateOp.make = function(localRuntime) {
 		return date;
 	}
 
+	function constructLocalDate(y,m,d,h,mi,s,ms)
+	{
+		var date = constructDate(y,m,d,h,mi,s,ms)
+		return new Date( Date.UTC(y,m,d,h,mi,s,ms) )
+	}
+	
 	return localRuntime.Native.DateOp.values = {
-		fromMoment: F7(constructDate)
+		fromMoment: F7(constructDate),
+		fromLocalMoment: F7(constructLocalDate)
 	};
 
 };

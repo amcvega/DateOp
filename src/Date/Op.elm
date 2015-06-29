@@ -66,7 +66,7 @@ not implemented from date(): D, j, l, S, z, W, F, M, t, L, o, B
 --}
 baseTokens : TokenDict
 baseTokens = 
-    let justInt = String.toInt >> Result.map ((+) -1) >> Result.toMaybe
+    let justInt = String.toInt >> Result.toMaybe
     in Dict.fromList
     [   ( "d"
         ,   ( day >> toString >> String.padLeft 2 '0'
@@ -79,12 +79,12 @@ baseTokens =
             )
         )
     ,   ( "m"
-        ,   ( month >> TimeStamp.fromMonth >> (+) 1 >> toString >> String.padLeft 2 '0'
+        ,   ( month >> TimeStamp.fromMonth >> toString >> String.padLeft 2 '0'
             , Just ( "[0-9]{2}" , \p -> {emptyTimeStampFragment | month <- justInt p} )
             )
         )
     ,   ( "n"
-        ,   ( month >> TimeStamp.fromMonth >> (+) 1 >> toString
+        ,   ( month >> TimeStamp.fromMonth >> toString
             , Just ( "[0-9]{1,2}" , \p -> {emptyTimeStampFragment | month <- justInt p} )
             )
         )
@@ -148,7 +148,7 @@ extTokens =
             )
         )
     ,   ( "N"
-        ,   ( dayOfWeek >> TimeStamp.fromWeekDay >> (+) 1 >> toString
+        ,   ( dayOfWeek >> TimeStamp.fromWeekDay >> toString
             , Nothing
             )
         )
